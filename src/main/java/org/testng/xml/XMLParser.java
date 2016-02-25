@@ -95,8 +95,7 @@ abstract public class XMLParser<T> implements IFileParser<T> {
    */
   private static boolean supportsValidation(SAXParserFactory spf) {
     try {
-      spf.getFeature("http://xml.org/sax/features/validation");
-      return true;
+      return spf.getFeature("http://xml.org/sax/features/validation");
     }
     catch(Exception ex) {
       return false;
