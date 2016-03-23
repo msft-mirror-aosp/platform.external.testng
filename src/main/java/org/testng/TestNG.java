@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLClassLoader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -28,10 +30,8 @@ import org.testng.internal.ClassHelper;
 import org.testng.internal.Configuration;
 import org.testng.internal.DynamicGraph;
 import org.testng.internal.IConfiguration;
-import org.testng.internal.IPathUtils;
 import org.testng.internal.IResultListener2;
 import org.testng.internal.OverrideProcessor;
-import org.testng.internal.PathUtilsFactory;
 import org.testng.internal.SuiteRunnerMap;
 import org.testng.internal.Utils;
 import org.testng.internal.Version;
@@ -191,8 +191,6 @@ public class TestNG {
 
   private boolean m_isInitialized = false;
 
-  private IPathUtils m_pathUtils = PathUtilsFactory.newInstance();
-
   /**
    * Default constructor. Setting also usage of default listeners/reporters.
    */
@@ -280,8 +278,9 @@ public class TestNG {
     	//to parse the suite files (<suite-file>), if any
     	for (XmlSuite s: m_suites) {
         for (String suiteFile : s.getSuiteFiles()) {
+            Path rootPath = Paths.get(s.getFileName()).getParent();
             try {
-                Collection<XmlSuite> childSuites = getParser(m_pathUtils.getSuiteNormalizedPath(s, suiteFile)).parse();
+                Collection<XmlSuite> childSuites = getParser(rootPath.resolve(suiteFile).normalize().toString()).parse();
                 for (XmlSuite cSuite : childSuites){
                     cSuite.setParentSuite(s);
                     s.getChildSuites().add(cSuite);

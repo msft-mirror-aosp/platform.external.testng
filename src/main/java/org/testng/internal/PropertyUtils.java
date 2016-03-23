@@ -14,11 +14,11 @@ import java.lang.reflect.Method;
  *
  * @author Cosmin Marginean, Apr 12, 2007
  */
-public class PropertyUtils implements IPropertyUtils {
+public class PropertyUtils {
 
   private static final Logger LOGGER = Logger.getLogger(PropertyUtils.class);
 
-  public void setProperty(Object instance, String name, String value) {
+  public static void setProperty(Object instance, String name, String value) {
     if (instance == null) {
       LOGGER.warn("Cannot set property " + name + " with value " + value + ". The target instance is null");
       return;
@@ -35,7 +35,7 @@ public class PropertyUtils implements IPropertyUtils {
     setPropertyRealValue(instance, name, realValue);
   }
 
-  public Class getPropertyType(Class instanceClass, String propertyName) {
+  public static Class getPropertyType(Class instanceClass, String propertyName) {
     if (instanceClass == null) {
       LOGGER.warn("Cannot retrieve property class for " + propertyName + ". Target instance class is null");
     }
@@ -64,7 +64,7 @@ public class PropertyUtils implements IPropertyUtils {
     return result;
   }
 
-  public void setPropertyRealValue(Object instance, String name, Object value) {
+  public static void setPropertyRealValue(Object instance, String name, Object value) {
     if (instance == null) {
       LOGGER.warn("Cannot set property " + name + " with value " + value + ". Targe instance is null");
       return;
