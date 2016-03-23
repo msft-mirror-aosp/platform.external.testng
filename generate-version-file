@@ -53,7 +53,5 @@ if ! grep --silent "$template_variable" "$template_file"; then
   exit 1
 fi
 
-set -e
-
 # Apply the template, replacing @version@ with the VERSION.
-sed -e "s:$template_variable:$stored_value:g" "$template_file"
+sed "$template_file" -e "s:$template_variable:$stored_value:g"
