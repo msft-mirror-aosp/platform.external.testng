@@ -2,7 +2,8 @@ package org.testng;
 
 import org.testng.collections.Lists;
 import org.testng.internal.ClassHelper;
-import org.testng.internal.PropertyUtils;
+import org.testng.internal.IPropertyUtils;
+import org.testng.internal.PropertyUtilsFactory;
 import org.testng.internal.Utils;
 
 import java.util.List;
@@ -26,6 +27,11 @@ public class ReporterConfig {
    * The properties of the reporter listener
    */
   private List<Property> m_properties = Lists.newArrayList();
+
+  /**
+   * JavaBeans properties access helper
+   */
+  private IPropertyUtils mPropertyUtils = PropertyUtilsFactory.newInstance();
 
   public void addProperty(Property property) {
     m_properties.add(property);
@@ -99,7 +105,7 @@ public class ReporterConfig {
     if (reporterClass != null) {
       result = ClassHelper.newInstance(reporterClass);
       for (ReporterConfig.Property property : m_properties) {
-        PropertyUtils.setProperty(result, property.getName(), property.getValue());
+        mPropertyUtils.setProperty(result, property.getName(), property.getValue());
       }
     }
     return result;
