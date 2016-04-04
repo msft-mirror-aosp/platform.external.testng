@@ -56,6 +56,24 @@ testng_src_files := $(filter-out $(testng_android_unsupported_src_files),$(testn
 ## Build rules follow.
 ##
 
+# target jar (static)
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := $(testng_src_files)
+LOCAL_MODULE := testng
+LOCAL_STATIC_JAVA_LIBRARIES := jcommander snakeyaml guice
+LOCAL_JAVA_LIBRARIES := junit-targetdex junit4-target
+include $(LOCAL_PATH)/GenerateTemplates.mk # Generate Version.java
+include $(BUILD_STATIC_JAVA_LIBRARY)
+
+# target jar (standalone, e.g. add it to classpath manually)
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := $(testng_src_files)
+LOCAL_MODULE := testng-lib
+LOCAL_STATIC_JAVA_LIBRARIES := jcommander snakeyaml guice
+LOCAL_JAVA_LIBRARIES := junit-targetdex junit4-target
+include $(LOCAL_PATH)/GenerateTemplates.mk # Generate Version.java
+include $(BUILD_JAVA_LIBRARY)
+
 # host jar
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(testng_src_files)
