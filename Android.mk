@@ -89,7 +89,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(testng_src_files)
 LOCAL_MODULE := testng-hostdex
 LOCAL_STATIC_JAVA_LIBRARIES := jcommander-hostdex snakeyaml-hostdex guice-hostdex
-LOCAL_JAVA_LIBRARIES := junit-hostdex junit4-target-hostdex
+LOCAL_JAVA_LIBRARIES := junit-hostdex
 include $(LOCAL_PATH)/GenerateTemplates.mk # Generate Version.java
 include $(BUILD_HOST_DALVIK_JAVA_LIBRARY)
 
