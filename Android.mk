@@ -79,7 +79,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(testng_src_files)
 LOCAL_MODULE := testng-host
 LOCAL_STATIC_JAVA_LIBRARIES := jcommander-host snakeyaml-host guice-host
-LOCAL_JAVA_LIBRARIES := junit
+LOCAL_JAVA_LIBRARIES := junit-host
 LOCAL_IS_HOST_MODULE := true
 include $(LOCAL_PATH)/GenerateTemplates.mk # Generate Version.java
 include $(BUILD_HOST_JAVA_LIBRARY)
