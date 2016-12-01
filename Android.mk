@@ -61,7 +61,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(testng_src_files)
 LOCAL_MODULE := testng
 LOCAL_STATIC_JAVA_LIBRARIES := jcommander snakeyaml guice
-LOCAL_JAVA_LIBRARIES := junit-targetdex
+LOCAL_JAVA_LIBRARIES := junit
 include $(LOCAL_PATH)/GenerateTemplates.mk # Generate Version.java
 include $(BUILD_STATIC_JAVA_LIBRARY)
 
@@ -70,7 +70,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(testng_src_files)
 LOCAL_MODULE := testng-lib
 LOCAL_STATIC_JAVA_LIBRARIES := jcommander snakeyaml guice
-LOCAL_JAVA_LIBRARIES := junit-targetdex
+LOCAL_JAVA_LIBRARIES := junit
 include $(LOCAL_PATH)/GenerateTemplates.mk # Generate Version.java
 include $(BUILD_JAVA_LIBRARY)
 
