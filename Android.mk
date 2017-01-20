@@ -91,6 +91,6 @@ LOCAL_MODULE := testng-hostdex
 LOCAL_STATIC_JAVA_LIBRARIES := jcommander-hostdex snakeyaml-hostdex guice-hostdex
 LOCAL_JAVA_LIBRARIES := junit-hostdex
 include $(LOCAL_PATH)/GenerateTemplates.mk # Generate Version.java
-include $(BUILD_HOST_DALVIK_JAVA_LIBRARY)
+include $(BUILD_HOST_DALVIK_STATIC_JAVA_LIBRARY)
 
 # TODO: also add the tests once we have testng working.
