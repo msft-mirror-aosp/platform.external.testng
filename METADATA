@@ -1,4 +1,5 @@
 third_party {
-  license_note: "would be NOTICE save for: src/main/java/org/testng/remote/strprotocol/AbstractRemoteTestRunnerClient.java"
+  # would be NOTICE save for:
+  #   src/main/java/org/testng/remote/strprotocol/AbstractRemoteTestRunnerClient.java
   license_type: RECIPROCAL
 }
